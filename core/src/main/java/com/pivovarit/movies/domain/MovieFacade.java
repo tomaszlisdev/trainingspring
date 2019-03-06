@@ -18,6 +18,10 @@ public class MovieFacade {
         add(new MovieDto(1L, "Spiderman1", new MovieTypeDto("NEW")));
     }
 
+    public static MovieFacade inMemoryMovieFacade() {
+        return new MovieFacade(new InMemoryMovieRepository(), new MovieCreator());
+    }
+
     public MovieId add(MovieDto filmDto) {
         return filmRepository.save(movieCreator.from(filmDto));
     }
