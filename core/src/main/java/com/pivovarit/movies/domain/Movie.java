@@ -1,6 +1,8 @@
 package com.pivovarit.movies.domain;
 
+
 public class Movie {
+
 
     private final MovieId id;
     private final String title;
@@ -23,4 +25,6 @@ public class Movie {
     MovieId getId() {
         return id;
     }
+    
+    
 }

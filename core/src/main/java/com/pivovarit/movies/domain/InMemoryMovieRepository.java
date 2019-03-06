@@ -2,13 +2,14 @@ package com.pivovarit.movies.domain;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
+import org.springframework.stereotype.Service;
 
 import static java.util.Objects.requireNonNull;
 
+@Service
 public class InMemoryMovieRepository implements MovieRepository {
 
     private final Map<Long, Movie> storage = new ConcurrentHashMap<>();

@@ -6,10 +6,16 @@ import com.pivovarit.movies.dto.MovieTypeDto;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class MovieFacade {
 
+	@Autowired
     private final MovieRepository filmRepository;
 
+	@Autowired
     private final MovieCreator movieCreator;
 
     public MovieFacade(MovieRepository filmRepository, MovieCreator movieCreator) {
