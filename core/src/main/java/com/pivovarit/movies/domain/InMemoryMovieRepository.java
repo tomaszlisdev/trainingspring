@@ -1,10 +1,7 @@
 package com.pivovarit.movies.domain;
 
-import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
@@ -30,7 +27,7 @@ class InMemoryMovieRepository implements MovieRepository {
     @Override
     public Optional<Movie> findByTitle(String title) {
         return storage.values().stream()
-          .filter(m -> m.getTitle().equals(title))
-          .findAny();
+            .filter(m -> m.getTitle().equals(title))
+            .findAny();
     }
 }
