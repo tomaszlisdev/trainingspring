@@ -2,24 +2,20 @@ package com.pivovarit.movies.domain;
 
 import com.pivovarit.movies.dto.MovieDto;
 import com.pivovarit.movies.dto.MovieTypeDto;
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@RequiredArgsConstructor
 public class MovieFacade {
 
     private final MovieRepository filmRepository;
     private final MovieCreator movieCreator;
-
-    public MovieFacade(MovieRepository filmRepository, MovieCreator movieCreator) {
-        this.filmRepository = filmRepository;
-        this.movieCreator = movieCreator;
-
-        add(new MovieDto(1L, "Spiderman1", new MovieTypeDto("NEW")));
-    }
+    private final MoviePriceCalculator moviePriceCalculator;
 
     public static MovieFacade inMemoryMovieFacade() {
-        return new MovieFacade(new InMemoryMovieRepository(), new MovieCreator());
+        return new MovieFacade(new InMemoryMovieRepository(), new MovieCreator(), new StaticMoviePriceCalculator());
     }
 
     public MovieId add(MovieDto filmDto) {

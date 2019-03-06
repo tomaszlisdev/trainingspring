@@ -13,7 +13,7 @@ class MoviesConfiguration {
 
     @Bean
     MovieFacade movieFacade(MovieRepository movieRepository) {
-        return new MovieFacade(movieRepository, new MovieCreator());
+        return new MovieFacade(movieRepository, new MovieCreator(), new StaticMoviePriceCalculator());
     }
 
     @Bean
