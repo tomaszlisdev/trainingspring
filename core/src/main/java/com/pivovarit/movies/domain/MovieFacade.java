@@ -5,6 +5,7 @@ import com.pivovarit.movies.dto.MovieTypeDto;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -15,11 +16,19 @@ public class MovieFacade {
     private final MoviePriceCalculator moviePriceCalculator;
 
     public static MovieFacade inMemoryMovieFacade() {
-        return new MovieFacade(new InMemoryMovieRepository(), new MovieCreator(), new StaticMoviePriceCalculator());
+        return new MovieFacade(new InMemoryMovieRepository(), new MovieCreator(), new StaticMoviePriceCalculator(42, 42, 42));
     }
 
     public MovieId add(MovieDto filmDto) {
         return filmRepository.save(movieCreator.from(filmDto));
+    }
+
+    public Optional<Long> priceFor(MovieTypeDto type) {
+        try {
+            return Optional.of(moviePriceCalculator.getPrice(MovieType.valueOf(type.getMovieType())));
+        } catch (Exception e) {
+            return Optional.empty();
+        }
     }
 
     public MovieDto findByTitle(String movieTitle) {

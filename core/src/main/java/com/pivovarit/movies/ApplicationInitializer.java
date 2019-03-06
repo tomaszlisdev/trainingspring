@@ -18,5 +18,7 @@ class ApplicationInitializer implements CommandLineRunner {
         System.out.println("Started!");
 
         movieFacade.add(new MovieDto(1L, "Spiderman1", new MovieTypeDto("NEW")));
+        movieFacade.priceFor(new MovieTypeDto("NEW"))
+            .ifPresent(System.out::println);
     }
 }
