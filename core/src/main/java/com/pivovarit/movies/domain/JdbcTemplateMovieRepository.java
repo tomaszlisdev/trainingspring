@@ -10,6 +10,7 @@ import java.time.Year;
 import java.time.temporal.ChronoField;
 import java.util.Collection;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 @RequiredArgsConstructor
 class JdbcTemplateMovieRepository implements MovieRepository {
@@ -41,6 +42,31 @@ class JdbcTemplateMovieRepository implements MovieRepository {
             new Object[]{title}, MOVIE_ROW_MAPPER)
             .stream()
             .findAny();
+    }
+
+    @Override
+    public Stream<Movie> findAllById(MovieId id) {
+        return null; //TODO
+    }
+
+    @Override
+    public Stream<Movie> findAllByType(MovieType id) {
+        return null; //TODO
+    }
+
+    @Override
+    public Stream<Movie> findAllByTypeAndYearBefore(MovieType type, Year year) {
+        return null; //TODO
+    }
+
+    @Override
+    public Stream<Movie> findAllByYearBetween(Year first, Year second) {
+        return null; //TODO
+    }
+
+    @Override
+    public Stream<Movie> findAllByYearOrderByYearAsc(Year year) {
+        return null; //TODO
     }
 
     static class MovieRowMapper implements RowMapper<Movie> {

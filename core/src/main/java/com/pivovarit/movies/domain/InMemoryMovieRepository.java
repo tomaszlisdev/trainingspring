@@ -1,10 +1,12 @@
 package com.pivovarit.movies.domain;
 
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Stream;
 
 import static java.util.Objects.requireNonNull;
 
@@ -29,5 +31,30 @@ class InMemoryMovieRepository implements MovieRepository {
         return storage.values().stream()
             .filter(m -> m.getTitle().equals(title))
             .findAny();
+    }
+
+    @Override
+    public Stream<Movie> findAllById(MovieId id) {
+        return null; // TODO
+    }
+
+    @Override
+    public Stream<Movie> findAllByType(MovieType id) {
+        return null; // TODO
+    }
+
+    @Override
+    public Stream<Movie> findAllByTypeAndYearBefore(MovieType type, Year year) {
+        return null; // TODO
+    }
+
+    @Override
+    public Stream<Movie> findAllByYearBetween(Year first, Year second) {
+        return null; // TODO
+    }
+
+    @Override
+    public Stream<Movie> findAllByYearOrderByYearAsc(Year year) {
+        return null; // TODO
     }
 }

@@ -43,6 +43,6 @@ class MoviesConfiguration {
     @Bean
     @Primary
     MovieRepository jpaMovieRepository(SpringDataMovieRepository springDataMovieRepository) {
-        return new JpaMovieRepository(springDataMovieRepository);
+        return new JpaMovieRepository(springDataMovieRepository, new MovieCreator());
     }
 }
