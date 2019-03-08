@@ -20,11 +20,11 @@ public class MovieDetailsControllerContractVerifier {
     private MovieDetailsController movieDetailsController;
 
     @MockBean
-    private MovieRepository movieRepository;
+    private MovieDetailsRepository movieDetailsRepository;
 
     @Before
     public void setup() {
-        when(movieRepository.getDetails("idkfa7")).thenReturn("idkfa7-details");
+        when(movieDetailsRepository.getDetails("idkfa7")).thenReturn("idkfa7-details");
 
         StandaloneMockMvcBuilder standaloneMockMvcBuilder = MockMvcBuilders.standaloneSetup(movieDetailsController);
         RestAssuredMockMvc.standaloneSetup(standaloneMockMvcBuilder);

@@ -41,13 +41,12 @@ class MoviesConfiguration {
     }
 
     @Bean
-    @Profile("prod")
+    @Primary
     MovieDetailsClient httpMovieDetailsClient() {
         return new HttpMovieDetailsClient();
     }
 
     @Bean
-    @Primary
     MovieDetailsClient inmemMovieDetailsClient() {
         return a -> new MovieDetailsClient.MovieDetails(UUID.randomUUID().toString());
     }

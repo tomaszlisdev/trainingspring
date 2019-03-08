@@ -24,7 +24,7 @@ class ApplicationInitializer implements CommandLineRunner {
         System.out.println("Started!");
 
         List<MovieDto> movies = Arrays.asList(
-            new MovieDto("spdrmun1", "Spiderman1", "", new MovieTypeDto("OLD"), 2012),
+            new MovieDto("idkfa78", "Spiderman1", "", new MovieTypeDto("OLD"), 2012),
             new MovieDto("spdrmun2", "Spiderman2", "", new MovieTypeDto("OLD"), 2013),
             new MovieDto("incptn", "Inception", "", new MovieTypeDto("REGULAR"), 2014),
             new MovieDto("plpfct1", "Pulp Fiction", "", new MovieTypeDto("OLD"), 1994),

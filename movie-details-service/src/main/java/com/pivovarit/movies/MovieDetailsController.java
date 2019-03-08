@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 class MovieDetailsController {
 
-    private final MovieRepository movieRepository;
+    private final MovieDetailsRepository movieDetailsRepository;
 
     @GetMapping(value = "/movie-details/{movieId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public MovieDetails movieDetails(@PathVariable  String movieId) throws InterruptedException {
         Thread.sleep(500);
 
-        String result = movieRepository.getDetails(movieId);
+        String result = movieDetailsRepository.getDetails(movieId);
 
         if (result == null) {
             return new MovieDetails(null);
