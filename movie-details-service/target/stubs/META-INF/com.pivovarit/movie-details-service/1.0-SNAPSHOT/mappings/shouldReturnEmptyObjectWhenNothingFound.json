@@ -1,0 +1,16 @@
+{
+  "id" : "5883fda1-ecb5-4b43-8381-0d68336acadf",
+  "request" : {
+    "url" : "/movie-details/notfound",
+    "method" : "GET"
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "{}",
+    "headers" : {
+      "Content-Type" : "application/json;charset=UTF-8"
+    },
+    "transformers" : [ "response-template" ]
+  },
+  "uuid" : "5883fda1-ecb5-4b43-8381-0d68336acadf"
+}
