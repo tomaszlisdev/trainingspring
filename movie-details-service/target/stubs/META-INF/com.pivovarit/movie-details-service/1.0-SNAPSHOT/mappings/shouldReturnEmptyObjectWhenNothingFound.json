@@ -1,5 +1,5 @@
 {
-  "id" : "5883fda1-ecb5-4b43-8381-0d68336acadf",
+  "id" : "512c57bf-e06f-45f7-b652-258ad0fe16f9",
   "request" : {
     "url" : "/movie-details/notfound",
     "method" : "GET"
@@ -12,5 +12,5 @@
     },
     "transformers" : [ "response-template" ]
   },
-  "uuid" : "5883fda1-ecb5-4b43-8381-0d68336acadf"
+  "uuid" : "512c57bf-e06f-45f7-b652-258ad0fe16f9"
 }

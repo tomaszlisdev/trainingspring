@@ -1,11 +1,13 @@
 package com.pivovarit.movies.domain;
 
+import com.pivovarit.movies.MovieDetailsClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 @Configuration
@@ -22,26 +24,38 @@ class MoviesConfiguration {
     @Lazy // works only if bean not injected in CommandLineRunner instance
     MovieFacade movieFacade(
         MovieRepository movieRepository,
+        MovieDetailsClient movieDetailsClient,
         @Value("${movies.price.new}") Long priceNew,
         @Value("${movies.price.old}") Long priceOld,
         @Value("${movies.price.regular}") Long priceRegular) {
         log.info("Initializing the movies facade");
-        return new MovieFacade(movieRepository, new MovieCreator(), new StaticMoviePriceCalculator(priceNew, priceOld, priceRegular));
+        return new MovieFacade(movieRepository, new MovieCreator(), new StaticMoviePriceCalculator(priceNew, priceOld, priceRegular), movieDetailsClient);
     }
 
     @Bean
+    @Primary
     MovieRepository inmemMovieRepository() {
         return new InMemoryMovieRepository();
     }
 
     @Bean
-//    @Primary
+    @Profile("prod")
+    MovieDetailsClient httpMovieDetailsClient() {
+        return new HttpMovieDetailsClient();
+    }
+
+    @Bean
+    @Primary
+    MovieDetailsClient inmemMovieDetailsClient() {
+        return a -> new MovieDetailsClient.MovieDetails("");
+    }
+
+    @Bean
     MovieRepository movieRepository(JdbcTemplate jdbcTemplate) {
         return new JdbcTemplateMovieRepository(jdbcTemplate);
     }
 
     @Bean
-    @Primary
     MovieRepository jpaMovieRepository(SpringDataMovieRepository springDataMovieRepository) {
         return new JpaMovieRepository(springDataMovieRepository, new MovieCreator());
     }
