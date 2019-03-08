@@ -4,5 +4,5 @@ import lombok.Value;
 
 @Value
 class MovieId {
-    private final long id;
+    private final String id;
 }
