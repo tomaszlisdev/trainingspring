@@ -3,6 +3,8 @@ package com.pivovarit.movies.domain;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,6 +21,7 @@ class JdbcTemplateMovieRepository implements MovieRepository {
 
     @Override
     public MovieId save(Movie movie) {
+
         jdbcTemplate.update("INSERT INTO movie VALUES (?, ?, ?, ?)",
             movie.getId().getId(),
             movie.getTitle(),
