@@ -18,12 +18,12 @@ public class MovieRESTResource {
     private final MovieFacade movieFacade;
 
     @GetMapping("/movies")
-    Collection<MovieDto> getFilms() {
+    public Collection<MovieDto> getFilms() {
         return movieFacade.findAll();
     }
 
     @GetMapping("/movies/{id}")
-    Optional<MovieDto> getFilm(@PathVariable String id) {
+    public Optional<MovieDto> getFilm(@PathVariable String id) {
         return movieFacade.findById(id);
     }
 }
