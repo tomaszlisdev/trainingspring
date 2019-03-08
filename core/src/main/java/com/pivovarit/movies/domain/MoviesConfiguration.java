@@ -1,5 +1,6 @@
 package com.pivovarit.movies.domain;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 @Configuration
 @Lazy
+@Slf4j
 class MoviesConfiguration {
 
     @Bean
@@ -23,7 +25,7 @@ class MoviesConfiguration {
         @Value("${movies.price.new}") Long priceNew,
         @Value("${movies.price.old}") Long priceOld,
         @Value("${movies.price.regular}") Long priceRegular) {
-        System.out.println("fasada init");
+        log.info("Initializing the movies facade");
         return new MovieFacade(movieRepository, new MovieCreator(), new StaticMoviePriceCalculator(priceNew, priceOld, priceRegular));
     }
 
@@ -33,8 +35,14 @@ class MoviesConfiguration {
     }
 
     @Bean
-    @Primary
+//    @Primary
     MovieRepository movieRepository(JdbcTemplate jdbcTemplate) {
         return new JdbcTemplateMovieRepository(jdbcTemplate);
+    }
+
+    @Bean
+    @Primary
+    MovieRepository jpaMovieRepository(SpringDataMovieRepository springDataMovieRepository) {
+        return new JpaMovieRepository(springDataMovieRepository);
     }
 }
