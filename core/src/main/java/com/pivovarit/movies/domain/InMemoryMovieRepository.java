@@ -35,7 +35,8 @@ class InMemoryMovieRepository implements MovieRepository {
 
     @Override
     public Stream<Movie> findAllById(MovieId id) {
-        return null; // TODO
+        return storage.values().stream()
+            .filter(m -> m.getId().getId().equals(id.getId()));
     }
 
     @Override

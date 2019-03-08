@@ -10,6 +10,8 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.util.UUID;
+
 @Configuration
 @Lazy
 @Slf4j
@@ -47,7 +49,7 @@ class MoviesConfiguration {
     @Bean
     @Primary
     MovieDetailsClient inmemMovieDetailsClient() {
-        return a -> new MovieDetailsClient.MovieDetails("");
+        return a -> new MovieDetailsClient.MovieDetails(UUID.randomUUID().toString());
     }
 
     @Bean
