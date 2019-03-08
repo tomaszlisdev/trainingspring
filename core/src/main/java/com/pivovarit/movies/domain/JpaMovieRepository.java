@@ -28,7 +28,8 @@ class JpaMovieRepository implements MovieRepository {
     @Override
     public Collection<Movie> findAll() {
         return StreamSupport.stream(crudMovieRepository.findAll().spliterator(), false)
-            .map(m -> new Movie(new MovieId(m.getId()), m.getTitle(), MovieType.valueOf(m.getType()), Year.of(m.getYear())))
+            .map(m -> new Movie(new MovieId(m.getId()), m.getTitle(), MovieType.valueOf(m.getType()), Year
+                .of(m.getYear())))
             .collect(Collectors.toList());
     }
 
