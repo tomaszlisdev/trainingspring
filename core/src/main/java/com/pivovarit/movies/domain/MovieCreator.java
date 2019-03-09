@@ -1,6 +1,6 @@
 package com.pivovarit.movies.domain;
 
-import com.pivovarit.movies.dto.MovieDto;
+import com.pivovarit.movies.api.MovieDto;
 
 import java.time.Year;
 

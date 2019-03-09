@@ -1,7 +1,7 @@
 package com.pivovarit.movies.domain;
 
-import com.pivovarit.movies.dto.MovieDto;
-import com.pivovarit.movies.dto.MovieTypeDto;
+import com.pivovarit.movies.api.MovieDto;
+import com.pivovarit.movies.api.MovieTypeDto;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.pivovarit.movies;
+package com.pivovarit.movies.infrastructure;
 
 import lombok.Value;
 

@@ -1,6 +1,5 @@
-package com.pivovarit.movies.domain;
+package com.pivovarit.movies.infrastructure;
 
-import com.pivovarit.movies.MovieDetailsClient;
 import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.converter.FormHttpMessageConverter;
@@ -10,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 import java.net.URI;
 import java.util.Arrays;
 
-class HttpMovieDetailsClient implements MovieDetailsClient {
+public class HttpMovieDetailsClient implements MovieDetailsClient {
 
     private final RestTemplate restTemplate = restTemplate();
 

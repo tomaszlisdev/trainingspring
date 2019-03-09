@@ -1,6 +1,7 @@
 package com.pivovarit.movies.domain;
 
-import com.pivovarit.movies.MovieDetailsClient;
+import com.pivovarit.movies.infrastructure.HttpMovieDetailsClient;
+import com.pivovarit.movies.infrastructure.MovieDetailsClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -18,7 +19,9 @@ import java.util.UUID;
 class MoviesConfiguration {
 
     @Bean
-    static MovieFacade inMemoryMovieFacade() {
+    @Profile("in-mem")
+    @Primary
+    MovieFacade inMemoryMovieFacade() {
         return MovieFacade.inMemoryMovieFacade();
     }
 
@@ -35,7 +38,6 @@ class MoviesConfiguration {
     }
 
     @Bean
-    @Primary
     MovieRepository inmemMovieRepository() {
         return new InMemoryMovieRepository();
     }
@@ -57,6 +59,7 @@ class MoviesConfiguration {
     }
 
     @Bean
+    @Profile("jpa")
     MovieRepository jpaMovieRepository(SpringDataMovieRepository springDataMovieRepository) {
         return new JpaMovieRepository(springDataMovieRepository, new MovieCreator());
     }

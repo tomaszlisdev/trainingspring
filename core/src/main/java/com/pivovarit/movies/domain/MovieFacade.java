@@ -1,21 +1,14 @@
 package com.pivovarit.movies.domain;
 
-import com.pivovarit.movies.MovieDetailsClient;
-import com.pivovarit.movies.dto.MovieDto;
-import com.pivovarit.movies.dto.MovieTypeDto;
+import com.pivovarit.movies.infrastructure.MovieDetailsClient;
+import com.pivovarit.movies.api.MovieDto;
+import com.pivovarit.movies.api.MovieTypeDto;
 import lombok.RequiredArgsConstructor;
-import lombok.Value;
-import org.springframework.http.MediaType;
-import org.springframework.http.RequestEntity;
-import org.springframework.http.converter.FormHttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.web.client.RestTemplate;
 
-import java.net.URI;
 import java.time.temporal.ChronoField;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -28,7 +21,8 @@ public class MovieFacade {
     private final MovieDetailsClient movieDetailsClient;
 
     public static MovieFacade inMemoryMovieFacade() {
-        return new MovieFacade(new InMemoryMovieRepository(), new MovieCreator(), new StaticMoviePriceCalculator(42, 42, 42), f -> new MovieDetailsClient.MovieDetails(""));
+        return new MovieFacade(new InMemoryMovieRepository(), new MovieCreator(), new StaticMoviePriceCalculator(42, 42, 42), f -> new MovieDetailsClient.MovieDetails(UUID
+            .randomUUID().toString()));
     }
 
     public MovieId add(MovieDto filmDto) {

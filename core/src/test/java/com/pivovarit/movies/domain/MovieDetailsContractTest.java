@@ -1,7 +1,7 @@
 package com.pivovarit.movies.domain;
 
-import com.pivovarit.movies.MovieRESTResource;
-import com.pivovarit.movies.dto.MovieDto;
+import com.pivovarit.movies.web.MovieRESTResource;
+import com.pivovarit.movies.api.MovieDto;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;

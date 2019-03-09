@@ -1,4 +1,4 @@
-package com.pivovarit.movies.dto;
+package com.pivovarit.movies.api;
 
 import lombok.Value;
 
